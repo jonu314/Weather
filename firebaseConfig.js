@@ -1,9 +1,7 @@
-// all names regarding code completion are in README.txt file 
-// as most files are collaborative
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateProfile } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-import { getDatabase, ref, push, onValue, get, set, orderByChild, query, equalTo, remove  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+import { equalTo, get, getDatabase, onValue, orderByChild, push, query, ref, remove, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,7 +23,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-export { app, auth, database, signInWithEmailAndPassword ,onAuthStateChanged, ref,
-    set, push, onValue, get, signOut, createUserWithEmailAndPassword, sendEmailVerification,
-    updateProfile, orderByChild, query, equalTo, remove, sendPasswordResetEmail
-   };
+export { app, auth, createUserWithEmailAndPassword, database, equalTo, get, onAuthStateChanged, onValue, orderByChild, push, query, ref, remove, sendEmailVerification, sendPasswordResetEmail, set, signInWithEmailAndPassword, signOut, updateProfile };

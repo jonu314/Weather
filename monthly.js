@@ -1,5 +1,4 @@
-// all names regarding code completion are in README.txt file 
-// as most files are collaborative
+
 
 // Utility function to get the number of days in a month
 function getDaysInMonth(month, year) {

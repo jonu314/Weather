@@ -1,5 +1,4 @@
-// all names regarding code completion are in README.txt file 
-// as most files are collaborative
+
 
 const apiKey = '2c4fe195f69547fda56145444230211';
 let mymap = L.map('mapid').setView([37.8, -96], 4); // Adjust the view to center on the US

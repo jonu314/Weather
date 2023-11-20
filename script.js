@@ -1,5 +1,4 @@
-// all names regarding code completion are in README.txt file 
-// as most files are collaborative
+
 
 let navbar = document.querySelector('.navbar');
 
