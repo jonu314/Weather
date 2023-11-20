@@ -1,0 +1,162 @@
+/* all names regarding code completion are in README.txt file 
+    as most files are collaborative*/
+
+body
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    background-size:100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+
+.header{
+    overflow: hidden;
+    background-color: #007BFF;
+    background-size: 100%;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 0;
+}
+
+.header .logo{
+    height: 100%;
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+}
+
+img{
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+.instruction-container{
+    width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    justify-content: center;
+    margin: 100px;
+    display: none;
+}
+
+.register-container{
+    width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    justify-content: center;
+    margin: 100px;
+}
+
+#login-form{
+    text-align: center;
+}
+
+label{
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+label .required {
+    color: red;
+    margin-left: 5px;
+}
+
+input{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button{
+    width: 90%;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+    background-image: linear-gradient(45deg, #ff00ff, #1400c4, #00a2ff);
+    background-size: 200% 200%;
+    transition: background-position 0.5s;
+}
+
+button:hover{
+    background-position: right center;
+}
+
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Huy */
+
+.dark-mode
+{
+    background-image: url(./Images/nightSky.jpeg);
+    
+}
+.dark-mode .header{
+    background-color: rgba(1, 55, 127, 0.5);
+    
+}
+
+.light-mode {
+    background-image: url(./Images/344403.jpg);
+}
+
+.light-mode .header{
+    background-color: #007BFF;
+}
+  

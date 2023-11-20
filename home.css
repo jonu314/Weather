@@ -1,0 +1,901 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding: 0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+:root {
+--pink : #e84393;
+--black: #222;
+--white : #fff;
+--light-bg : #f5f5f5;
+--light-color : #777;
+--border : .2rem solid #222;
+--box-shadow : 0 .5rem 1rem rgba(0,0,0,.1);
+--bg-color: white;
+--text-color: black;
+--nav-color: #f0f0f0;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Add this to your CSS file */
+.dark-mode {
+  background-color: #373636bd; /* Dark background color */
+  color: white; /* Light text color for contrast */
+}
+
+/*Some of darkmode(Huy)*/
+.dark-mode .subheading,
+.dark-mode .weather-section,
+.dark-mode .current-weather,
+.dark-mode .seven-day-forecast,
+.dark-mode .news-updates,
+.dark-mode .footer, 
+.dark-mode .hr,
+.dark-mode .hourly-forecast-section,
+.dark-mode .wd,
+.dark-mode .additional-weather-details,
+.dark-mode .nu,
+.dark-mode .news-updates,
+.dark-mode .map,
+.dark-mode .map-container {  
+  color: #ddd; /* Even lighter text color for readability */
+}
+
+.dark-mode img {
+  filter: brightness(0.8); /* Dim images for dark mode */
+}
+
+.dark-mode .header{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Default Light Theme */
+body {
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text */
+}
+
+
+/* Dark Theme - applied when the body has the .dark-mode class */
+body.dark-mode {
+  background-image: url("./Images/nightSky.jpeg"); /* Dark background */
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+
+/* Specific elements that need additional styling in dark mode */
+.dark-mode h2 {
+  color: #fff; /* White color for headings */
+}
+
+.dark-mode .forecast-day{
+  background-color: #373636bd; /* Dark background */
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+.dark-mode .chart-container {
+  background-color: #373636e4; /* Dark background */
+  color: white;
+}
+
+.dark-mode .detail-item{
+  background-color: #373636bd; /* Dark background */
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+.dark-mode .detail-item h3{
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+.dark-mode .detail-item p{
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+.dark-mode .news-item{
+  background-color: #373636bd; /* Dark background */
+  color: #ccc; /* Lighter text color for dark background */
+}
+
+.dark-mode .navbar{
+  background-image: url("./Images/nightSky.jpeg");
+}
+
+.dark-mode .feedback-btn{
+  color: white;
+  border-color: rgb(52, 144, 236);
+}
+
+.dark-mode .maps-btn{
+  color: white;
+  border-color: rgb(52, 144, 236);
+}
+
+.dark-mode .feedback-btn{
+  color: white;
+  border-color: rgb(52, 144, 236);
+}
+
+.dark-mode .subheading-btn{
+  color: white;
+  border-color: rgb(52, 144, 236);
+}
+
+.dark-mode .monthlyForecast-btn{
+  color: white;
+  border-color: rgb(52, 144, 236);
+}
+
+
+body {
+  background-image: url("./Images/344403.jpg"); /* Adjust the path to your image */
+  background-size: cover;  /* This will cover the entire viewport */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  background-position: center center; /* This will center the image */
+  background-attachment: fixed ;
+}
+
+
+@mixin grid($val) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  gap:2rem;
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(4rem);
+    opacity: 0;
+  }
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+
+  &::-webkit-scrollbar{
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track{
+    background: var(--white);
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: #777;
+  }
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border: 1px solid #222;
+  background-color: #fff;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: #222;
+
+  &:hover {
+    color: var(--white);
+    background: var(--light-color);
+  }
+}
+
+.logo-container {
+    text-align: center; /* Center the logo horizontally */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999; /* Keep it below the header */
+}
+
+.header{
+    padding:1.5rem 9%;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top:0; left:0; right:0;
+    z-index: 1000;
+
+    .logo img{
+      height: 5rem;
+      border-radius: 20px;
+    }
+
+    .search-form{
+        height: 5rem;
+        width: 50rem;
+        border-radius: 50px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+
+        .input {
+          width: 90%;
+        }
+      }
+      
+      /*Huy*/
+      .icons{
+        display: flex;
+        
+      }
+       
+    .icons div{
+        height: 4.5rem;
+        width: 4.5rem;
+        line-height: 4.5rem;
+        text-align: center;
+        background: #f5f5f5;
+        color:#222;
+        cursor: pointer;
+        font-size: 1.8rem;
+        margin-left: .3rem;
+        border-radius: 20px;
+
+        &:hover{
+        background: #777;
+        color:#fff;
+        }
+    }
+
+    #search-btn{
+        display: none;
+    }
+}
+
+.navbar{
+    position: fixed;
+    top:0; left:-110%;
+    z-index: 1010;
+    height: 100%;
+    width: fit-content;
+    background-image: url(/Images/344403.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    gap:2rem;
+    justify-content: start;
+    flex-flow: column;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 10%;
+  
+    &.active{
+      left:0;
+    }
+  
+    #close-navbar{
+      position: absolute;
+      top:3rem; right:3rem;
+      height: 5rem;
+      width: 5rem;
+      line-height: 5rem;
+      text-align: center;
+      /*background-color: #eaeaea;*/
+      color: var(--black);
+      cursor: pointer;
+      font-size: 3rem;
+  
+      /*&:hover{
+        color:var(--white);
+        background: var(--light-color);
+      }*/
+    }
+  
+    .navbar a {
+      font-size: 100px;
+      text-transform:uppercase;
+      color: var(--white);
+      font-weight: lighter;
+  
+      &:hover{
+        color:var(--light-color);
+        letter-spacing: .2rem;
+      }
+    }
+    [data-theme="dark"] & {
+      
+      background: var(--dark-bg); 
+
+      .navbar a {
+          color: var(--white);
+      }
+
+      #close-navbar {
+          color: var(--white);
+
+          &:hover {
+              color: var(--dark-color); 
+          }
+      }
+  }
+  }
+
+  .user-auth {
+    display: flex;
+    gap: 10px; /* Adjust as needed for spacing between login and sign-up links */
+    align-items: center; /* To vertically align the links if there are other items in the header */
+  }
+
+  .login-btn img{
+    margin: 10px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .logout-btn img{
+    margin: 10px;
+    width: 25px;
+    height: 25px;
+  }
+
+.subheading {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 2rem;
+    width: auto;
+    display: flex;
+    justify-content: space-around; /* Distributes items evenly */
+    flex-wrap: wrap; /* Allows items to wrap onto next line if there's not enough space */
+    border-radius: 20px;
+
+}
+
+.maps-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px; /* Adds space around each button */
+  border: 2px solid #030303; /* Border around the button */
+  border-radius: 20px; /* Rounds the corners of the button */
+  text-decoration: none; /* Removes underline from the links */
+  color: #1a14b9; /* Text color */
+  transition: background-color 0.3s; /* Adds a transition effect for hover state */
+}
+
+.maps-btn:hover {
+  background-color: #e0e0e0; /* Changes the background color when hovered */
+}
+
+.monthlyForecast-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px; /* Adds space around each button */
+  border: 2px solid #030303; /* Border around the button */
+  border-radius: 20px; /* Rounds the corners of the button */
+  text-decoration: none; /* Removes underline from the links */
+  color: #1a14b9; /* Text color */
+  transition: background-color 0.3s; /* Adds a transition effect for hover state */
+}
+
+.monthlyForecast-btn:hover {
+  background-color: #e0e0e0; /* Changes the background color when hovered */
+}
+
+.feedback-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px; /* Adds space around each button */
+  border: 2px solid #030303; /* Border around the button */
+  border-radius: 20px; /* Rounds the corners of the button */
+  text-decoration: none; /* Removes underline from the links */
+  color: #1a14b9; /* Text color */
+  transition: background-color 0.3s; /* Adds a transition effect for hover state */
+}
+
+.feedback-btn:hover {
+  background-color: #e0e0e0; /* Changes the background color when hovered */
+}
+
+.subheading-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px; /* Adds space around each button */
+  border: 2px solid #030303; /* Border around the button */
+  border-radius: 20px; /* Rounds the corners of the button */
+  text-decoration: none; /* Removes underline from the links */
+  color: #1a14b9; /* Text color */
+  transition: background-color 0.3s; /* Adds a transition effect for hover state */
+}
+
+.subheading-btn:hover {
+  background-color: #e0e0e0; /* Changes the background color when hovered */
+}
+
+
+.weather-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.current-weather{
+  box-sizing: border-box;
+  border: 1px solid #007BFF;
+  border-radius: 20px;
+  /* background-color: #f8f9fa; */
+  text-align: center;
+  font-size: medium;
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+}
+
+.current-weather, .seven-day-forecast {
+    width: auto; /* Adjust this value as needed for spacing */
+    padding: 20px;
+    font-size: medium;
+    border: 1px solid #007BFF;
+    border-radius: 20px;
+    /*background-color: #f8f9fa; */
+    text-align: center;
+    font-size: medium;
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+}
+
+.seven-day-forecast h2 {
+  margin-bottom: 10px;
+}
+
+.forecast-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 50px; /* Adjust this value to change the space between each box */
+  padding: 16px;
+  border: 2px solid #007BFF; 
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.672);
+
+}
+
+.forecast-day {
+  flex: 1 1 calc(14.28% - 1rem); /* This will make each day take up 10% of the container's width, accounting for the 16px gap */
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #007BFF;
+  border-radius: 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+  font-size: medium;
+  min-width: 100px;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.forecast-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  overflow-y: auto; /* Vertical scroll if the content exceeds the container width */
+}
+
+.forecast-day h3 {
+  margin-top: 0; 
+}
+
+.hourly-forecast-section {
+
+  /* background-color: #f4f4f4; or any color you prefer */
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #007BFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+  font-size: medium;
+}
+
+.hourly-forecast-section h2 {
+  margin-bottom: 10px;
+}
+
+.chart-container {
+  max-width: 100%;
+  height: 250px; /* Adjusted height */
+  margin: 0 auto; /* Centering the chart */
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+#hourlyForecastChart {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.additional-weather-details {
+  border-radius: 20px;
+  border: 1px solid #007BFF;
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */  
+  padding: 20px;
+
+}
+
+.additional-weather-details h2 {
+  margin-bottom: 10px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+  gap: 20px;
+}
+
+.detail-item {
+  /*background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-item h3 {
+  margin-top: 0;
+  color: #333333;
+  font-size: large;
+}
+
+.detail-item p {
+  margin: 10px 0;
+  font-size: medium;
+  color: #070707;
+}
+
+
+/* News and Updates Section */
+.news-updates, .nearby-forecasts {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+  border-radius: 20px;
+  border: 1px solid #007BFF;
+  margin-top: 20px; /* Add margin to separate it from the News and Updates section */
+}
+
+.news-container, .nearby-forecasts ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-updates h2, .nearby-forecasts h2 {
+  margin-bottom: 10px;
+}
+
+.news-item, .nearby-forecasts li {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #1845e7; /* Light grey border */
+  background-color: #f8f9fa;
+  border-radius: 20px;
+}
+
+.news-date {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #5e5c5c; /* Dark grey color for the date */
+}
+
+.nearby-forecasts a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  border: 1px solid #007BFF;
+  border-radius: 10px;
+  padding: 8px 15px;
+  display: inline-block;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nearby-forecasts a:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+
+
+.weather-image {
+  text-align: center; /* Centers the image */
+  padding: 20px; /* Adds some padding around the image */
+}
+
+.weather-image img {
+  max-width: auto; /* Set a max-width to the image */
+  height: auto; /* Keep the aspect ratio */
+}
+
+
+
+.footer {
+
+  background-color: #2B2D30; /* Darker grey for elegance */
+  color: #FFFFFF; /* White color for text */
+  padding: 40px 10%; /* Spacious padding with 10% horizontal padding for responsiveness */
+  font-family: 'Arial', sans-serif; /* Simple and readable font */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Even spacing between sections */
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1; /* Evenly distribute space amongst sections */
+  min-width: 200px; /* Set a minimum width for each section */
+  margin: 0 20px; /* Spacing between sections */
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Vertically center logo and text */
+}
+
+.logo img {
+  max-width: 200px; /* Reduced logo size */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.footer-text {
+  font-size: 14px; /* Smaller text for the description */
+  opacity: 0.8; /* Slightly translucent for subtleness */
+}
+
+.footer h3 {
+  font-size: 16px; /* A bit larger than normal text */
+  margin-bottom: 15px; /* Space between title and links */
+  border-bottom: 2px solid #4CAF50; /* Green underline for emphasis */
+  display: inline-block; /* Keeps the border close to the text */
+}
+
+.footer-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links li a {
+  color: #FFFFFF; /* White color for links */
+  text-decoration: none;
+  display: block;
+  margin: 7px 0; /* Space between links */
+  font-size: 14px; /* Consistent font size */
+  opacity: 0.8; /* Translucency for a softer look */
+}
+
+.footer-links li a:hover {
+  color: #4CAF50; /* Green color on hover for a pop of color */
+  opacity: 1; /* Fully opaque on hover */
+}
+
+.social-icons {
+  display: flex; /* Make icons line up horizontally */
+  gap: 15px; /* Consistent gap between icons */
+  margin-bottom: 25px; /* Margin to separate from the next section */
+}
+
+.social-icons a {
+  color: #FFFFFF; /* White icons */
+  margin: 0 10px; /* Space between icons */
+  font-size: 20px; /* Slightly larger icons for visibility */
+  opacity: 0.8; /* Same translucency for consistency */
+}
+
+.social-icons a:hover {
+  color: #4CAF50; /* Green on hover */
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px; /* More space before this section */
+  font-size: 12px; /* Smaller font for less emphasis */
+  opacity: 0.7; /* More translucency for subtlety */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center; /* Centered on mobile */
+  }
+
+  .footer-section {
+      margin: 20px 0; /* Vertical spacing on mobile */
+  }
+}
+
+
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    width: 100%; /* Take the full width */
+    padding: 10px; /* Comfortable padding for typing */
+    margin-bottom: 10px; /* Spacing between elements */
+    border: 2px solid #E0E0E0; /* Border color */
+    font-size: 16px; /* Readable font size */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    outline: none; /* Remove default browser outline */
+}
+
+.contact-form button {
+    background-color: #4CAF50; /* Green background */
+    color: #FFFFFF; /* White text */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Hand cursor for interactivity */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.contact-form button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+
+
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+  border-radius: 20px;
+  border: 1px solid #007BFF;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-title {
+    text-align: center;
+    /* Add more styles for your title as needed */
+}
+
+.map-container #mapid {
+  width: 950px; 
+  height: 300px;
+}
+
+.map-container h2 {
+  margin-bottom: 10px;
+}
+
+  /* media queries */
+@media (max-width:991px) {
+
+  html {
+    font-size: 55%;
+  }
+
+  .header {
+    padding: 1.5rem 2rem;
+  }
+
+}
+
+@media (max-width:768px) {
+
+  .header {
+    #search-btn{
+      display: inline-block;
+      width: auto;
+    }
+
+    .search-form{
+      position: absolute;
+      top: 99%;
+      left: 0;
+      border-top: var(--border);
+      border-bottom: var(--border);
+      width: 100%;
+      background: white;
+      height: 6rem;
+      display: none;
+      animation: fadeUp .2s linear backwards;
+
+      &.active{
+        display: flex;
+      }
+    }
+  }
+  
+}
+
+@media (max-width:450px) {
+
+  html {
+    font-size: 50%;
+  }
+  
+}
+
+@media (max-width: 768px) { /* Example breakpoint for tablets */
+  .current-weather,
+  .ten-day-forecast {
+      flex: 100%; /* Take full width */
+  }
+}
+
+@media (max-width: 768px) {  /* You can adjust this value based on your design requirements */
+  .details-grid {
+    grid-template-columns: 1fr; /* Change to a single column layout */
+  }
+}
+
+
+@media screen and (max-width: 982px) {
+  .map-container #mapid {
+      width: 100%; /* Make the map width 100% of the container */
+      height: 200px; /* Adjust the height as needed */
+  }
+}

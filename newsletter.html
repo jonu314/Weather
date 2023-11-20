@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .header{
+                overflow: hidden;
+                background-color: #50b3a2;
+                background-size: 100%;
+                background-position: center;
+                background-repeat:no-repeat;
+                height: 80px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 0;
+            }
+
+            .header .logo{
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .logo img{
+                height: 70%;
+                width: 100%;
+                border-radius: 20px;
+            }
+
+        header {
+            background: #50b3a2;
+            color: white;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+
+        header a {
+            color: #040404;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            margin-left: 20px;
+        }
+        .newsletter {
+            padding: 15px;
+            color: #555555;
+            background: #ffffff;
+        }
+        .newsletter h1 {
+            font-size: 24px;
+        }
+        .newsletter p {
+            font-size: 16px;
+        }
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        .newsletter-form input[type="email"] {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #dddddd;
+        }
+        .newsletter-form input[type="submit"] {
+            padding: 10px;
+            background: #50b3a2;
+            color: white;
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+    
+    <header>
+        <div class="container">
+            <h1>Newsletter</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <!-- Other links can be added here -->
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="newsletter">
+            <h1>Subscribe to Our Newsletter</h1>
+            <p>Get the latest updates and offers directly in your inbox.</p>
+            <form class="newsletter-form" action="your-backend-script" method="POST">
+                <input type="email" placeholder="Enter your email" name="email" required>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

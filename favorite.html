@@ -1,0 +1,43 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Location</title>
+    <link rel="stylesheet" href="favorite.css">
+    <link rel="icon" href="Images/cloud.png">
+</head>
+<body>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- App bar -->
+    <div class="header" id="header">
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+
+    <div class="search-bar" id="search">
+        <img src="https://cdn-icons-png.flaticon.com/128/954/954591.png"/>
+        <input id="search-input" type="text" placeholder="Enter city name..."/>
+        <img id="add-btn" src="https://cdn-icons-png.flaticon.com/128/833/833472.png"/>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-inner-overlay" id="loading-inner-Overlay">
+        <div class="loading-inner-spinner"></div>
+    </div>
+
+    <div class="container" id="dynamic-container"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH3MTTgijLG7d5Q4t6nrpEuJnFMrL3ips&libraries=places" defer>
+    </script>
+    <script type="module" src="favorite.js"></script>
+
+</body>
+</html>

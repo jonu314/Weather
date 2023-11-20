@@ -1,0 +1,176 @@
+/* all names regarding code completion are in README.txt file 
+    as most files are collaborative*/
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(./Images/344403.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.header{
+  overflow: hidden;
+  background-color: #007BFF;
+  background-size: 100%;
+  background-position: center;
+  background-repeat:no-repeat;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-top: 0;
+}
+
+.header .logo{
+  height: 100%;
+  margin-left: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.logo img{
+  height: 70%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+table#monthlyForecast {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table#monthlyForecast th{
+  width: 14.28%; /* Distribute the width equally among 7 days */
+  border: 1px solid #040404;
+  height: 50px;
+  vertical-align: top;
+  padding: 5px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5); /* Slight white transparency */
+}
+
+table#monthlyForecast td {
+  width: 14.28%; /* Distribute the width equally among 7 days */
+  border: 1px solid #040404;
+  height: 100px;
+  vertical-align: top;
+  padding: 5px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5); /* Slight white transparency */
+  
+}
+
+th {
+  /* background-color: #e0e0e0; */
+  height: 50px;
+}
+
+strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+table#monthlyForecast thead {
+  background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+}
+
+.dropdown {
+  position: relative;
+  width: 230px;
+  filter: url(#goo);
+
+  &__face,
+  &__items {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  &__face {
+    display: block;
+    position: relative;
+  }
+
+  &__items {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 100%;
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
+
+    &::before {
+      content: "";
+      background-color: #fff;
+      position: absolute;
+      bottom: 100%;
+      right: 20%;
+      height: 40px;
+      width: 20px;
+    }
+  }
+
+  &__arrow {
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg) translateY(-50%);
+    transform-origin: right;
+  }
+
+  input {
+    display: none;
+
+    &:checked ~ .dropdown__items {
+      top: calc(100% + 25px);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+#home-button {
+  position: absolute; /* Absolute position the home button */
+  top: 10px; /* Adjust as needed */
+  left: 10px;
+  padding: 10px 20px; /* Add some padding around the text */
+  font-size: 16px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  color: rgb(12, 12, 12); /* Set the text color */
+  border: none; /* Remove the border */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Change the cursor to a pointer to indicate it's clickable */
+  text-decoration: none; /* Remove underline if it's an <a> element */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#home-button:hover,
+#home-button:focus { /* Hover and focus state */
+  background-color: #0056b3; /* Darken the button a bit when hovered/focused */
+  outline: none; /* Remove the outline to keep the design clean */
+}
+
+/* Optional: if you want the button to be more noticeable */
+#home-button:active {
+  transform: scale(0.98); /* Slightly shrink the button when clicked */
+}
+
+.dark-mode , .dark-mode .header /*Huy*/
+{
+    color: rgb(22, 59, 112);
+    background-image: url(./Images/nightSky.jpeg);
+    
+}

@@ -1,0 +1,103 @@
+/* all names regarding code completion are in README.txt file 
+    as most files are collaborative*/
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(./Images/344403.jpg);
+    background-size: 100%;
+}
+
+.header{
+    overflow: hidden;
+    background-color: #007BFF;
+    background-size: 100%;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 0;
+}
+
+.header .logo{
+    height: 100%;
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.3); /* Slight white transparency */
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode
+{
+    color: rgb(11, 247, 145);
+    background-image: url(./Images/nightSky.jpeg);
+    
+}
+.dark-mode .header{
+    background-color: rgba(1, 55, 127, 0.5);
+    
+}
+.dark-mode .container{
+    background-color: rgb(46, 38, 44);
+    
+}
+.dark-mode button{
+    color: lightgreen;
+    background-color: rgba(77, 125, 100, 0.926);
+    
+}

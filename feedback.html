@@ -1,0 +1,49 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Brainiac - Feedback</title>
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+    
+    <div class="container">
+        <h2>Weather Brainiac Feedback</h2>
+        <form action="/submit-feedback" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="5" required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+    <script>
+
+  window.onload = function() {
+    const body = document.body;
+    
+    // Check if 'dark-mode' class is in localStorage
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      console.log("enable")
+    } else {
+      body.classList.remove('dark-mode');
+      console.log("disable")
+    }
+  }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* all names regarding code completion are in README.txt file 
+    as most files are collaborative*/
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: aliceblue;
+  background-size: cover;
+  background-position: center;
+}
+
+.header{
+padding:1.5rem 9%;
+background-color: aliceblue;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+top:0; left:0; right:0;
+z-index: 1000;
+
+.logo img{
+  width: 250px;
+  height: 3.5rem;
+  border-radius: 25px;
+}
+}
+
+#home-button {
+position: absolute; /* Absolute position the home button */
+top: 10px; /* Adjust as needed */
+left: 10px;
+padding: 10px 20px; /* Add some padding around the text */
+font-size: 16px; /* Set the font size */
+font-weight: bold; /* Make the text bold */
+color: rgb(12, 12, 12); /* Set the text color */
+border: none; /* Remove the border */
+border-radius: 5px; /* Add rounded corners */
+cursor: pointer; /* Change the cursor to a pointer to indicate it's clickable */
+text-decoration: none; /* Remove underline if it's an <a> element */
+transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#home-button:hover,
+#home-button:focus { /* Hover and focus state */
+background-color: #0056b3; /* Darken the button a bit when hovered/focused */
+outline: none; /* Remove the outline to keep the design clean */
+}
+
+/* Optional: if you want the button to be more noticeable */
+#home-button:active {
+transform: scale(0.98); /* Slightly shrink the button when clicked */
+}

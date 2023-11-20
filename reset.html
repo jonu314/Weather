@@ -1,0 +1,96 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- App bar -->
+    <div class="header" id="header">
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+
+    <!-- Email Instruction -->
+    <div class="instruction-container" id="instruction">
+        <h3>Please check your email and follow the instruction.</h3>
+    </div>
+
+    <form class="register-container" id="register">
+        <h2>Account Information</h2>      
+            <!-- Email Field -->
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <!-- Submit Button -->
+            <button type="submit" id="submit">Submit</button>
+        <!-- Link to Login Page -->
+        <p>Already have an account? <a href="login.html">Log in here</a>.</p>        
+    </form>
+    
+
+
+        <script type="module">
+            import { auth, sendPasswordResetEmail, onAuthStateChanged } from "./firebaseConfig.js";
+            
+            document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('register').style.display = 'none';
+            window.onload = function() {
+                // Show loading overlay
+                document.getElementById('loadingOverlay').style.display = 'flex';
+            
+                // Simulate a longer loading time (adjust the duration as needed)
+                setTimeout(function() {
+                    // Hide loading overlay after the simulated loading time
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 1000); // 1000 milliseconds (1 seconds) - Adjust the duration as needed
+            
+                const body = document.body;
+            
+                // Check if 'dark-mode' class is in localStorage (Huy)
+                if (localStorage.getItem('darkMode') === 'true') {
+                    body.classList.add('dark-mode');
+                    body.classList.remove('light-mode');
+                    //console.log("enable")
+                } else {
+                    body.classList.add('light-mode');
+                    body.classList.remove('dark-mode');
+                    //console.log("disable")
+                } 
+                document.getElementById('header').style.display = 'flex';
+                document.getElementById('register').style.display = 'block';
+            }
+        });
+
+            document.querySelector('form').addEventListener('submit', function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                var email = document.getElementById('email').value;
+
+                sendPasswordResetEmail(auth, email)
+                    .then(() => {
+                        document.getElementById('instruction').style.display = 'block';
+                        document.getElementById('register').style.display = 'none';
+                        setTimeout(function() {
+                            window.location.href = 'login.html';
+                        }, 10000);
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                    })
+            });
+            
+        </script>
+
+</body>
+</html>

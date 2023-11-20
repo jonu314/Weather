@@ -1,0 +1,200 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" href="Images/cloud.png">
+</head>
+<body>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- App bar -->
+    <div class="header" id="header">
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+
+    <!-- Email Instruction -->
+    <div class="instruction-container" id="instruction">
+        <h3>Please check your email and follow the instruction, then refresh the page.</h3>
+    </div>
+
+    <form class="register-container" id="register">
+        <h2>Create Account</h2>
+            <!-- Full Name Field -->
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Your Full Name" required>
+            
+            <!-- Email Field -->
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <!-- Password Field -->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a Password" required>
+            
+            <!-- Confirm Password Field -->
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Your Password" required>
+            
+            <!-- Submit Button -->
+            <button type="button" id="SignUp">Create account</button>
+        <!-- Link to Login Page -->
+        <p>Already have an account? <a href="login.html">Log in here</a>.</p>        
+    </form>
+
+    <script type="module">
+        import { auth, database, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, ref, set, onAuthStateChanged } from "./firebaseConfig.js";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('register').style.display = 'none';
+            window.onload = function() {
+                // Show loading overlay
+                document.getElementById('loadingOverlay').style.display = 'flex';
+            
+                // Simulate a longer loading time (adjust the duration as needed)
+                setTimeout(function() {
+                    // Hide loading overlay after the simulated loading time
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 1000); // 1000 milliseconds (1 seconds) - Adjust the duration as needed
+            
+                const body = document.body;
+            
+                // Check if 'dark-mode' class is in localStorage (Huy)
+                if (localStorage.getItem('darkMode') === 'true') {
+                    body.classList.add('dark-mode');
+                    body.classList.remove('light-mode');
+                    //console.log("enable")
+                } else {
+                    body.classList.add('light-mode');
+                    body.classList.remove('dark-mode');
+                    //console.log("disable")
+                } 
+                document.getElementById('header').style.display = 'flex';
+                document.getElementById('register').style.display = 'block';
+            }
+
+            // Check if the user is logged in
+            onAuthStateChanged(auth, (user) => {
+                    if (user && user.emailVerified) {
+                        // User is logged in and email is verified
+                        console.log("User is logged in and email is verified.");
+                        // Redirect to the homepage
+                        window.location.href = 'index.html';
+                    } else if (user && !user.emailVerified) {
+                        // User is logged in but email is not verified
+                        console.log("User is logged in but email is not verified.");
+                    } else {
+                        // User is not logged in
+                        console.log("User is not logged in.");
+                    }
+                });
+
+            // Listen for form submission
+            document.querySelector('form').addEventListener('submit', function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Your form submission logic
+                handleFormSubmission();
+            });
+
+            // Listen for button click
+            document.getElementById('SignUp').addEventListener('click', function(event) {
+                // Prevent the default button click behavior
+                event.preventDefault();
+
+                // Your form submission logic
+                handleFormSubmission();
+            });
+
+            function handleFormSubmission() {
+                // Get the value from the form fields
+                var fullName = document.getElementById('fullname').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmpassword').value;
+            
+                // Regular expressions for validation
+                var nameRegex = /^[a-zA-Z\s]+$/;
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                // Validate Full Name
+                if (!nameRegex.test(fullName)) {
+                    alert('Please enter a valid full name.');
+                    return;
+                }
+
+                // Validate Email
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Validate Repeat Password
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+
+                //Create User with Email and Password
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        const userId = auth.currentUser.uid;
+                        
+                        set(ref(database, 'users/' + userId), {
+                            username: fullName,
+                            email: email,
+                            location: "",
+                        })
+
+                        // Update user profile
+                        updateProfile(user, { displayName: fullName})
+                            .then(() => {
+                                // Send email verification
+                                sendEmailVerification(user)
+                                    .then(() => {
+                                        document.getElementById('instruction').style.display = 'block';
+                                        document.getElementById('register').style.display = 'none';
+                                    })
+                                    .catch((verificationError) => {
+                                        console.error("Error sending verification email:", verificationError);
+                                    })
+                            })
+                            .catch((profileError) => {
+                                console.error("Error updating user profile:", profileError);
+                            })
+
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+
+                        switch (errorCode) {
+                        case 'auth/weak-password':
+                            alert('The password is too weak. Please choose a stronger password.');
+                            break;
+                        case 'auth/email-already-in-use':
+                            alert('The email address is already in use by another account.');
+                            break;
+                        default:
+                            alert(`Registration failed: ${errorMessage}`);
+                        }
+                    });
+            }            
+                
+        });
+    </script>
+
+</body>
+</html>

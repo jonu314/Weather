@@ -1,0 +1,79 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            border: 2px solid #000; /* 2px solid black border */
+            padding: 10px; /* Add some padding for better visual appearance */
+        }
+        .faq-section {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+       
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            color: #500deb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frequently Asked Questions</h1>
+
+<div class="faq-section">
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer1')">What is Weather Brainiac?</div>
+        <div class="answer" id="answer1">Weather Brainiac is an advanced weather forecasting system powered by cutting-edge technology and artificial intelligence. It provides precise and proactive weather predictions, helping users in various industries make informed decisions and mitigate weather-related risks.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer2')">What features does Weather Brainiac offer?</div>
+        <div class="answer" id="answer2">Weather Brainiac offers a range of features, including real-time weather predictions, historical data analysis, and user-friendly interfaces. It provides actionable information to industries such as agriculture, logistics, emergency management, and more, allowing users to optimize operations and make data-driven decisions.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer1')"> Who can benefit from using Weather Brainiac?</div>
+        <div class="answer" id="answer1">Weather Brainiac is beneficial for a wide range of industries, including agriculture, transportation, construction, emergency management, and event planning. Any sector that relies on accurate and timely weather information to make critical decisions can leverage the insights provided by Weather Brainiac.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer2')">How can Weather Brainiac enhance emergency preparedness?</div>
+        <div class="answer" id="answer2">Weather Brainiac provides real-time alerts and forecasts, aiding in proactive emergency preparedness. By anticipating adverse weather conditions, emergency management teams can implement timely measures, evacuate at-risk areas, and minimize the impact of natural disasters.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer1')">What level of technical support is available for Weather Brainiac users?</div>
+        <div class="answer" id="answer1">Weather Brainiac offers comprehensive technical support to ensure a smooth user experience. Our support team is available to assist with any queries, troubleshooting, or technical issues that users may encounter. We prioritize user satisfaction and are committed to providing timely assistance.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer2')">How does Weather Brainiac stand out from other forecasting systems?</div>
+        <div class="answer" id="answer2">Weather Braniac anticipates changes, offers real-time alerts, and empowers users with historical data analysis, making it a strategic tool for resource optimization, risk mitigation, and overall operational efficiency.</div>
+    </div>
+</div>
+<script>
+    function toggleAnswer(answerId) {
+        var answer = document.getElementById(answerId);
+        if (answer.style.display === 'none') {
+            answer.style.display = 'block';
+        } else {
+            answer.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

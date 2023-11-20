@@ -1,0 +1,198 @@
+/* all names regarding code completion are in README.txt file 
+    as most files are collaborative*/
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #e6f7ff, #b3d9ff);
+}
+
+.header{
+    overflow: hidden;
+    background-color: #007BFF;
+    background-size: 100%;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 0;
+}
+
+.header .logo{
+    height: 100%;
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.current-location h1 {
+    color: white;
+    font-size: 22px;
+    position: absolute;
+    right: 20px;
+    top: 5%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.current-location h1 i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.search-bar img {
+    height: 20px;
+    width: 20px;
+    margin: 0 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.hourly-forecast {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hour-box {
+    background: linear-gradient(to right, #0099f7, #0051ba);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    color: white;
+    margin: 20px 0;
+    padding: 20px;
+    width: 90%; /* Adjust to your layout */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    position: relative; /* Needed for absolute positioning of the dropdown content */
+    padding-bottom: 30px; /* Make room for the dropdown button */
+}
+
+
+
+.hour-time, .hour-temp, .hour-condition {
+    margin-right: 15px;
+}
+
+.weather-icon {
+    width: 40px;
+    height: auto;
+}
+
+.dropdown-btn {
+    background-color: #3274D9;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2E3A5A;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 1;
+    right: 0;
+    border-radius: 5px;
+    width: 200px;
+    bottom: 60%;
+}
+
+.dropdown-content p {
+    margin: 5px 0;
+}
+
+/* Show the dropdown content when clicking on the button */
+.show {
+    display: block;
+}
+
+/* Style the arrow down icon */
+.dropdown-btn::after {
+    content: '\25BC';
+    float: right;
+    margin-left: 5px;
+}
+
+/* Rotate the arrow icon when the dropdown is active */
+.show ~ .dropdown-btn::after {
+    content: '\25B2';
+}
+
+
+.hour-box:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+}
+
+.hour-box img {
+    width: 60px; /* Adjust the size of your icons */
+}
+
+.hour-box div {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.temperature {
+    font-size: 28px; /* Make the font size larger */
+    font-weight: bold;
+}
+
+.condition {
+    font-size: 20px; /* Slightly increase the condition font size for readability */
+    opacity: 0.9; /* Slight transparency for a softer look */
+}
+
+.dark-mode
+{
+
+    background-image: url(./Images/nightSky.jpeg);
+}
+.dark-mode .header{
+    background-color: rgba(1, 55, 127, 0.5);
+    
+}
+
+.dark-mode button{
+    color: lightgreen;
+    background-color: rgba(77, 125, 100, 0.926);
+    
+}
+

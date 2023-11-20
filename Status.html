@@ -1,0 +1,58 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecasting System Status</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, p {
+            color: #3498db;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Weather Forecasting System Status</h1>
+    </header>
+
+    <main>
+        <img src="data:image/png;base64,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" alt="Checkmark Icon">
+        <h2>All System Functionalities Operational</h2>
+        <p>The weather forecasting system is currently running smoothly, and all functionalities are operational. You can continue to enjoy accurate and up-to-date weather information. Thank you for using our service!</p>
+    </main>
+
+</body>
+</html>

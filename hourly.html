@@ -1,0 +1,40 @@
+<!--all names regarding code completion are in README.txt file 
+    as most files are collaborative-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hourly.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Hourly Weather Forecast</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="current-location">
+            <h1 id="location-name"><i class="fas fa-map-marker-alt"></i> Your Location</h1>
+        </div>        
+        <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+    </div>
+
+    <div class="search-bar">
+        <img src="https://cdn-icons-png.flaticon.com/128/954/954591.png"/>
+        <input id="search-input" type="text" placeholder="Enter city name..."/>
+        <div id="suggestions" class="suggestions"></div>
+        
+    </div>
+
+    
+
+        <div class="hourly-forecast" id="hourly-forecast">
+            <!-- Hourly weather data will be injected here by script.js -->
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH3MTTgijLG7d5Q4t6nrpEuJnFMrL3ips&libraries=places" defer>
+        </script>
+        
+    <script src="hourly.js"></script>
+</body>
+</html>
