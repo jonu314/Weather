@@ -1,0 +1,111 @@
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Login Form</title>
+        <link rel="stylesheet" href="login.css">
+        <link rel="icon" href="Images/cloud.png">
+    </head>
+    <body>
+    
+        <!-- Loading overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+        </div>
+    
+        <!-- App bar -->
+        <div class="header" id="header">
+            <a href="index.html" class="logo"> <img src="Images/LOGO1.png" alt=""> </a>
+        </div>
+        <!-- Login Container -->
+        <div class="login-container" id="login">
+            <h1>Login</h1>
+            <form id="login-form">
+                <label for="email"><i class="user-icon"></i>Email</label>
+                <input type="text" id="email" name="email" required placeholder="Enter your email"><br>
+    
+                <label for="password"><i class="lock-icon"></i>Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password"><br>
+                <div class="forgot"><a href="reset.html" >Forgot password?</a></div>
+                <button type="submit" id="login">Login</button>
+            </form>
+            <p>Don't have an account? <a href="register.html">Create an account</a></p>
+        </div>
+    
+    
+        <script type="module">
+            import { auth, signInWithEmailAndPassword, onAuthStateChanged } from "./firebaseConfig.js";
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('header').style.display = 'none';
+                document.getElementById('login').style.display = 'none';
+                window.onload = function() {
+                    // Show loading overlay
+                    document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                    // Simulate a longer loading time (adjust the duration as needed)
+                    setTimeout(function() {
+                        // Hide loading overlay after the simulated loading time
+                        document.getElementById('loadingOverlay').style.display = 'none';
+                    }, 1000); // 1000 milliseconds (1 seconds) - Adjust the duration as needed
+                
+                    const body = document.body;
+                
+                    // Check if 'dark-mode' class is in localStorage (Huy)
+                    if (localStorage.getItem('darkMode') === 'true') {
+                        body.classList.add('dark-mode');
+                        body.classList.remove('light-mode');
+                        //console.log("enable")
+                    } else {
+                        body.classList.add('light-mode');
+                        body.classList.remove('dark-mode');
+                        //console.log("disable")
+                    } 
+                    document.getElementById('header').style.display = 'flex';
+                    document.getElementById('login').style.display = 'block';
+                }
+            });
+    
+            document.querySelector('form').addEventListener('submit', function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                // Get the value from the form fields
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+            
+                // Validate input and register User
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        window.location.href = "index.html";
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+    
+                        switch (errorCode) {
+                            case 'auth/user-not-found':
+                                alert('User not found. Please check your email and try again or register a new account.');
+                                break;
+                            case 'auth/wrong-password':
+                                alert('Invalid password. Please check your password and try again.');
+                                break;
+                            case 'auth/invalid-email':
+                                alert('Invalid email address. Please enter a valid email.');
+                                break;
+                            case 'auth/invalid-login-credentials':
+                                alert('Invalid login credentials.');
+                                break;
+                            default:
+                                alert(`Sign-in failed: ${errorMessage}`);
+                        }
+                    });
+            });
+    
+        </script>
+    
+    </body>
+    </html>
